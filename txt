@@ -1,0 +1,79 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+class txt
+{
+public:
+    void SetA(int a)
+    {
+        this->a = a;
+    }
+    void SetB(int b)
+    {
+        this->b = b;
+    }
+    void SetC(char c)
+    {
+        this->c = c;
+    }
+    int GetRez(int rez)
+    {
+        this->rez = rez;
+        return rez;
+    }
+    void Printtotxt()
+    {
+        calculate();
+        const char* info = "C:/Users/Public/calculate.txt";
+        ofstream file(info);
+        file << a << c << b << "=" << rez << endl;
+        file.close();
+    }
+    
+private:
+    int a;
+    int b;
+    char c;
+    int rez;
+    int calculate()
+    {
+        switch (c)
+        {
+        case '-':
+            rez = a - b;
+            break;
+        case '+':
+            rez = a + b;
+            break;
+        case '*':
+            rez = a * b;
+            break;
+        case '/':
+            rez = a / b;
+            break;
+            return rez;
+        }
+    }
+};
+
+int main()
+{
+    setlocale(LC_ALL, "RU");
+    txt fir;
+    cout << "Введите первое число" << endl;
+    int a;
+    cin >> a;
+    fir.SetA(a);
+    char c;
+    cout << "Введите знак" << endl;
+    cin >> c;
+    fir.SetC(c);
+    int b;
+    cout << "Введите второе число" << endl;
+    cin >> b;
+    cout << "Вычисление сохраненно по пути: C:/Users/Public/calculate.txt";
+    fir.SetB(b);
+    fir.Printtotxt();
+}
